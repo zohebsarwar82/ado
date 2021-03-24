@@ -30,4 +30,4 @@ steps:
   inputs:
     scanType: 'images'
     twistlockService: 'zs-PCE'
-    artifact: 'ubuntu:latest'
+    artifact: 'jenkins/jenkins:lts'
