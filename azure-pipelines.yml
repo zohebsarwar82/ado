@@ -19,7 +19,7 @@ steps:
   displayName: 'Run a multi-line script'
 - task: Prisma Cloud IaC Scan@3
   inputs:
-    Path: 'CFT'
+    Path: '.'
     prismaCloudService: 'Prisma IAC'
     High: '1'
     Medium: '1'
