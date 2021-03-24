@@ -1,0 +1,29 @@
+
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+trigger:
+ branches:
+    include:
+    - master
+pool:
+  vmImage: 'ubuntu-latest'
+steps:
+- task: Palo-Alto-Networks.build-release-task.custom-build-release-task.prisma-cloud-compute-scan@1
+  displayName: 'Prisma Cloud Compute Scan'
+  inputs:
+    twistlockService: 'NewEnv Connection'
+    artifact: 'nginx:latest'
+- task: Prisma Cloud IaC Scan@1
+  inputs:
+    Path: 'repo'
+    prismaCloudService: 'Prisma Cloud Scan'
+    High: '0'
+    Medium: '0'
+    Low: '0'
+    Operator: 'or'
+- script: |
+    echo Add other tasks to build, test, and deploy your project.
+    echo See https://aka.ms/yaml
+	displayName: 'Run a multi-line script'
