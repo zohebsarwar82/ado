@@ -26,3 +26,8 @@ steps:
     Low: '1'
     Operator: 'or'
     Tags: 'name:zs, repo:ado'
+- task: prisma-cloud-compute-scan@3
+  inputs:
+    scanType: 'images'
+    twistlockService: 'zs-PCE'
+    artifact: 'ubuntu:latest'
