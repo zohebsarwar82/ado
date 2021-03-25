@@ -35,3 +35,10 @@ steps:
     scanType: 'images'
     twistlockService: 'zs-PCE'
     artifact: 'zohebsarwar/web1:ubuntu'
+- task: Docker@2
+  inputs:
+    containerRegistry: 'zs-docker'
+    repository: 'web1'
+    command: 'buildAndPush'
+    Dockerfile: '**/ado/docker/DockerFile'
+    tags: '$(ado)'
