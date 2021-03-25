@@ -27,4 +27,4 @@ steps:
     repository: 'web1'
     command: 'build'
     Dockerfile: '**/Dockerfile'
-    tags: '$(ado)'
+    tags: 'ado'
