@@ -17,6 +17,19 @@ steps:
     echo Add other tasks to build, test, and deploy your project.
     echo See https://aka.ms/yaml
   displayName: 'Run a multi-line script'
+- task: Prisma Cloud IaC Scan@3
+  inputs:
+    Path: '.'
+    prismaCloudService: 'Prisma IAC'
+    High: '50'
+    Medium: '50'
+    Low: '50'
+    Operator: 'or'
+    Tags: 'name:zs, repo:ado'
+- task: Docker@2
+  inputs:
+    containerRegistry: 'zs-docker'
+    command: 'login'
 - task: Docker@2
   inputs:
     containerRegistry: 'zs-docker'
@@ -27,4 +40,9 @@ steps:
     repository: 'zohebsarwar/web1'
     command: 'buildAndPush'
     Dockerfile: '**/Dockerfile'
-    tags: 'ado1'
+    tags: 'ado2'
+- task: prisma-cloud-compute-scan@3
+  inputs:
+    scanType: 'images'
+    twistlockService: 'zs-PCE'
+    artifact: 'zohebsarwar/web1:ado2'
