@@ -24,7 +24,7 @@ steps:
 - task: Docker@2
   inputs:
     containerRegistry: 'zs-docker'
-    repository: 'web1'
+    repository: 'zohebsarwar/web1'
     command: 'buildAndPush'
     Dockerfile: '**/Dockerfile'
     tags: 'ado1'
