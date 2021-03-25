@@ -21,13 +21,17 @@ steps:
   inputs:
     Path: '.'
     prismaCloudService: 'Prisma IAC'
-    High: '1'
-    Medium: '1'
-    Low: '1'
+    High: '50'
+    Medium: '50'
+    Low: '50'
     Operator: 'or'
     Tags: 'name:zs, repo:ado'
+- task: Docker@2
+  inputs:
+    containerRegistry: 'zs-docker'
+    command: 'login'
 - task: prisma-cloud-compute-scan@3
   inputs:
     scanType: 'images'
     twistlockService: 'zs-PCE'
-    artifact: 'jenkins/jenkins:lts'
+    artifact: 'zohebsarwar/web1:ubuntu'
